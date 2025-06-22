@@ -1,0 +1,134 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+}
+body{
+    background-color: #3a4244;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.todo-container{
+    width: 40%;
+    min-width: 350px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 200px;
+    gap: 20px;
+    background-color: #5c5050;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.todo-container header{
+    font-size: 24px;
+    color: #fff;
+}
+
+.form-container{
+    background-color: blue;
+    border-radius: 10px;
+}
+
+.form-container form{
+    display: flex;
+    color: red;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.form-input input{
+    width: 200px;
+    height: 40px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-btn button{
+    width: 80px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: rgb(57, 175, 136);
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+.form-btn button:hover{
+    background-color: rgb(24, 116, 85);
+}
+
+.task-container{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.task-items{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+}
+
+.task-item{
+    display: flex;
+    width: 280px;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 20px
+}
+.action-btns{
+    display: flex;
+    gap: 5px;
+    font-size: 20px;
+    color: #fff;
+}
+.action-btns .action{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;         
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.action-btns .complete{
+    background-color: rgb(91, 206, 91);
+}
+.action-btns .complete:hover{
+    background-color: rgb(66, 158, 66);
+
+}
+.action-btns .delete{
+    background-color: rgb(182, 65, 65);   
+}
+.action-btns .delete:hover{
+    background-color: rgb(197, 32, 32);   
+}
+.clear-all{
+    width: 80px;
+    height: 35px;
+    outline: none;
+    border: none;
+    background-color: rgb(177, 25, 45);
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.clear-all:hover{
+    background-color: rgb(207, 19, 44);
+}
