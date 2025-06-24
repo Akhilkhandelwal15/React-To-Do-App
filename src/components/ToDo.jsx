@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./ToDo.css"
-import { MdDeleteForever } from "react-icons/md";
-import { TiTick } from "react-icons/ti";
 import ToDoForm from "./ToDoForm";
 import ToDoList from "./ToDoList";
 import ToDoDateTime from "./ToDoDateTime";
@@ -10,15 +8,15 @@ export function ToDo(){
 
     const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || []);
 
-    function handleFormSubmit(inputvalue){
-        if(inputvalue==="" || tasks.includes(inputvalue)){
+    function handleFormSubmit(data){
+        if(tasks.some(item => item.id === data.id)){
             return;
         }
-        const newTasks = [...tasks, inputvalue]
+
+        const newTasks = [...tasks, data];
         setTasks(newTasks);
         localStorage.setItem("tasks", JSON.stringify(newTasks));
     }
-
 
     function clearTasks(){
         setTasks([]);
@@ -26,7 +24,18 @@ export function ToDo(){
     }
 
     function deleteTask(taskToDelete){
-        const updatedTasks = tasks.filter((task)=> task !== taskToDelete);
+        const updatedTasks = tasks.filter((task)=> task.id !== taskToDelete);
+        setTasks(updatedTasks);
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    }
+
+    function checkTask(taskToCheck){
+        const updatedTasks = tasks.map((task)=> {
+            if(taskToCheck===task.id){
+                return { ...task, checked: !task.checked };
+            }
+            return task;
+        });
         setTasks(updatedTasks);
         localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     }
@@ -40,9 +49,9 @@ export function ToDo(){
             <ToDoForm onToDoSubmit={handleFormSubmit} />
             <section className="task-container">
                 <div className="task-items">
-                    {tasks.length!==0 && tasks.map((value, index)=>{
+                    {tasks.length!==0 && tasks.map((object)=>{
                         return (
-                            <ToDoList key={index} data={value} onDeleteTask={deleteTask}/>
+                            <ToDoList key={object.id} data={object} onDeleteTask={deleteTask} onCheckTask={checkTask} />
                         );
                     })}
                 </div>

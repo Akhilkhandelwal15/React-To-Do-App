@@ -93,7 +93,11 @@ body{
     justify-content: space-between;
     background-color: #fff;
     border-radius: 25px;
-    padding: 20px
+    padding: 20px;
+    font-size: 16px;
+}
+.task-item.checked{
+    text-decoration: line-through;
 }
 .action-btns{
     display: flex;

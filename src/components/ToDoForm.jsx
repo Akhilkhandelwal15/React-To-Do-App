@@ -7,15 +7,18 @@ export default function ToDoForm({onToDoSubmit}){
     function handleTask(event){
         setInputvalue(event.target.value);
     }
-    function handleFormSubmit(event){
+    function handleToDoFormSubmit(event){
         event.preventDefault();
-        onToDoSubmit(inputvalue);
+        if(inputvalue==""){
+            return;
+        }
+        onToDoSubmit({id:inputvalue, value:inputvalue, checked:false});
         setInputvalue("");
     }
 
     return (
         <section className="form-container">
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleToDoFormSubmit}>
                 <div className="form-input">
                     <input type="text" value={inputvalue} onChange={handleTask}></input>
                 </div>
